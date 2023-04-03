@@ -11,7 +11,8 @@ function isMusl() {
   // For Node 10
   if (!process.report || typeof process.report.getReport !== 'function') {
     try {
-      return readFileSync('/usr/bin/ldd', 'utf8').includes('musl')
+      const lddPath = require('child_process').execSync('which ldd').toString().trim()
+      return readFileSync(lddPath, 'utf8').includes('musl')
     } catch (e) {
       return true
     }
@@ -95,6 +96,15 @@ switch (platform) {
     }
     break
   case 'darwin':
+    localFileExisted = existsSync(join(__dirname, 'package-template.darwin-universal.node'))
+    try {
+      if (localFileExisted) {
+        nativeBinding = require('./package-template.darwin-universal.node')
+      } else {
+        nativeBinding = require('@napi-rs/package-template-darwin-universal')
+      }
+      break
+    } catch {}
     switch (arch) {
       case 'x64':
         localFileExisted = existsSync(join(__dirname, 'package-template.darwin-x64.node'))
@@ -218,6 +228,7 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { plus100 } = nativeBinding
+const { plus100, darker } = nativeBinding
 
 module.exports.plus100 = plus100
+module.exports.darker = darker
