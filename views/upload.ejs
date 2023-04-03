@@ -1,0 +1,20 @@
+<div class="container">
+  <form class="w-50 mx-auto my-3" action="/uploads" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <input class="form-control" type="file" name="upload" required />
+    </div>
+    <div class="w-50 d-flex form-outline align-middle">
+      <label class="form-label text-nowrap pr-3" for="saturation">% saturation&nbsp;</label>
+      <input name="saturation" value="65" type="number" id="saturation" class="form-control" />
+    </div>
+    <button class="btn btn-primary">Upload</button>
+  </form>
+
+  <div class="container">
+    <% for (const file of files){ %>
+    <div class="row mb-3">
+      <img src="/storage/<%= file %>" class="card-img-top" alt="Image" />
+    </div>
+    <% } %>
+  </div>
+</div>

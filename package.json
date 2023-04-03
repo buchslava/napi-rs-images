@@ -1,9 +1,9 @@
 {
-  "name": "@napi-rs/package-template",
+  "name": "NAPI image demo",
   "version": "1.0.0",
-  "description": "Template project for writing node package with napi-rs",
+  "description": "Image demo for napi-rs",
   "main": "index.js",
-  "repository": "git@github.com:napi-rs/package-template.git",
+  "repository": "git@github.com:buchslava/napi-rs-images.git",
   "license": "MIT",
   "keywords": [
     "napi-rs",
@@ -18,7 +18,7 @@
     "index.js"
   ],
   "napi": {
-    "name": "package-template",
+    "name": "image-demo",
     "triples": {
       "defaults": true,
       "additional": [
@@ -43,6 +43,7 @@
     "access": "public"
   },
   "scripts": {
+    "start": "node server",
     "artifacts": "napi artifacts",
     "bench": "node -r @swc-node/register benchmark/bench.ts",
     "build": "napi build --platform --release --pipe \"prettier -w\"",
@@ -107,5 +108,12 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
-  "packageManager": "yarn@3.4.1"
+  "packageManager": "yarn@3.4.1",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-fileupload": "^1.4.0",
+    "uuid": "^9.0.0"
+  }
 }
