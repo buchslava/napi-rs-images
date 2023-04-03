@@ -1,4 +1,4 @@
-const { plus100, darker } = require('./index')
+const { plus100, darker } = require('../index')
 
 // console.assert(plus100(0) === 100, 'Simple test failed')
 

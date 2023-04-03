@@ -1,5 +1,4 @@
 [package]
-authors = ["LongYinan <lynweklm@gmail.com>"]
 edition = "2021"
 name    = "napi-package-template"
 version = "0.1.0"
@@ -8,6 +7,7 @@ version = "0.1.0"
 
 [lib]
 crate-type = ["cdylib"]
+path = "lib/lib.rs"
 
 [dependencies]
 image = "0.24.6"
