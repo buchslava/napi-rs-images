@@ -1,3 +1,3 @@
-const { darker } = require('../index')
+const { darker } = require('./index')
 
 darker('./cube.png', 50)
